@@ -1,1 +1,1 @@
-web: gunicorn km-hipchat-screamer:app.app
+web: gunicorn km_hipchat_screamer:app.app
