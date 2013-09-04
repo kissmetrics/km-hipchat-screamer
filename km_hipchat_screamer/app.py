@@ -26,5 +26,8 @@ def root_route():
 
     return jsonify(body)
 
+from annoy import annoy
+app.register_blueprint(annoy)
+
 if __name__ == "__main__":
   app.run(debug=True)
