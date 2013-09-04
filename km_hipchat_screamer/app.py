@@ -25,3 +25,6 @@ def root_route():
     body = { "Title": "KISSmetrics HipChat Webhook endpoint" }
 
     return jsonify(body)
+
+if __name__ == "__main__":
+  app.run(debug=True)
