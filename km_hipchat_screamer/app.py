@@ -29,5 +29,8 @@ def root_route():
 from annoy import annoy
 app.register_blueprint(annoy)
 
+from statuspage import statuspage 
+app.register_blueprint(statuspage)
+
 if __name__ == "__main__":
   app.run(debug=True)
