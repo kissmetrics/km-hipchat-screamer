@@ -9,6 +9,7 @@ Module providing test routes for the KISSmetrics HipChat Webhook service
 
 
 from flask import Blueprint, jsonify
+from utils import env_check
 import os
 import hipchat
 
@@ -21,17 +22,15 @@ annoy = Blueprint('annoy', __name__)
 # Routes
 #-------
 
-if ANNOY_HIPCHAT_TOKEN:
-    @annoy.route('/annoy/<channel>')
-    def annoy_route(channel):
-        """Spam a particular room"""
-    
-    
-        hipchat_api = hipchat.HipChat(token=ANNOY_HIPCHAT_TOKEN)
-        hipchat_api.message_room(channel, 'Screamer', 'test', notify=True)
-    
-        body = { "action": "message sent" }
-    
-        return jsonify(body)
-else:
-    print "ANNOY_HIPCHAT_TOKEN not supplied, annoy routes disabled"
+@annoy.route('/annoy/<channel>')
+@env_check('ANNOY_HIPCHAT_TOKEN')
+def annoy_route(channel):
+    """Spam a particular room"""
+
+
+    hipchat_api = hipchat.HipChat(token=ANNOY_HIPCHAT_TOKEN)
+    hipchat_api.message_room(channel, 'Screamer', 'test', notify=True)
+
+    body = { "action": "message sent" }
+
+    return jsonify(body)
