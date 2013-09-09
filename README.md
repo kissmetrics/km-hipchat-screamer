@@ -19,3 +19,18 @@ receiver of webhooks, spammer of rooms.
     heroku login
     heroku create
     git push heroku master
+
+## Configuring
+
+### Plugins
+
+#### annoy
+
+Set an environment variable for:
+- `ANNOY_HIPCHAT_TOKEN`: HipChat API token (hopefully just a notifcation token)
+
+#### statuspage
+
+Set an environment variable for:
+- `STATUSPAGE_HIPCHAT_TOKEN`: HipChat API token (hopefully just a notifcation token)
+- `STATUSPAGE_NOTIFY_ROOMS`: Comma separated list of HipChat rooms to spam `1234,4321`
