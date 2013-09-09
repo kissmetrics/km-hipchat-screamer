@@ -43,11 +43,6 @@ statuspage = Blueprint('statuspage', __name__)
 # Routes
 #-------
 
-@statuspage.route('/dump', methods=['POST'])
-def dump():
-    return jsonify({'OK'})
-
-
 @statuspage.route('/statuspage/alert', methods=['POST'])
 @env_check('STATUSPAGE_HIPCHAT_TOKEN')
 @env_check('STATUSPAGE_NOTIFY_ROOMS')
@@ -57,8 +52,10 @@ def statuspage_route():
     notification = json.loads(request.data)
 
     if 'component_update' in notification:
+        page_id = notification['page']['id']
         component_update = notification['component_update']
-        component_name = get_component_name(notification['page']['id'], component_update['component_id'])
+        component_id = component_update['component_id']
+        component_name = get_component_name(page_id, component_id)
         old_status = component_update['old_status']
         new_status = component_update['new_status']
         color = hipchat_notification_color[new_status]
