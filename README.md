@@ -34,3 +34,6 @@ Set an environment variable for:
 Set an environment variable for:
 - `STATUSPAGE_HIPCHAT_TOKEN`: HipChat API token (hopefully just a notifcation token)
 - `STATUSPAGE_NOTIFY_ROOMS`: Comma separated list of HipChat rooms to spam `1234,4321`
+
+Optional:
+- `STATUSPAGE_NOTIFY_NAME`: Name of user in HipChat room, defaults to statuspage.io

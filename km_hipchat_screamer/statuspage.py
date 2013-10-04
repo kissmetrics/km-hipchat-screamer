@@ -38,6 +38,7 @@ def get_component_name(page_id, component_id):
 
 STATUSPAGE_HIPCHAT_TOKEN = os.environ.get('STATUSPAGE_HIPCHAT_TOKEN')
 STATUSPAGE_NOTIFY_ROOMS = os.environ.get('STATUSPAGE_NOTIFY_ROOMS')
+STATUSPAGE_NOTIFY_NAME = os.environ.get('STATUSPAGE_NOTIFY_NAME', 'statuspage.io')
 
 statuspage = Blueprint('statuspage', __name__)
 
@@ -73,7 +74,7 @@ def statuspage_route():
 
     hipchat_api = hipchat.HipChat(token=STATUSPAGE_HIPCHAT_TOKEN)
     for channel in STATUSPAGE_NOTIFY_ROOMS.split(','):
-        hipchat_api.message_room(channel, 'KM Status', message, notify=True, color=color)
+        hipchat_api.message_room(channel, STATUSPAGE_NOTIFY_NAME, message, notify=True, color=color)
 
     body = { "action": "message sent" }
 
