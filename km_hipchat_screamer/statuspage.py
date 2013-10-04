@@ -24,7 +24,8 @@ hipchat_notification_color = { 'operational': 'green',
                                'investigating': 'red',
                                'identified': 'yellow',
                                'monitoring': 'gray',
-                               'resolved': 'green' }
+                               'resolved': 'green',
+                               'postmortem': 'gray' }
 
 def get_component_name(page_id, component_id):
     url = 'http://%s.statuspage.io/index.json' % (page_id)
