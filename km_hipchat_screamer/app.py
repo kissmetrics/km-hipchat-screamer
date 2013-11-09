@@ -32,5 +32,9 @@ app.register_blueprint(annoy)
 from statuspage import statuspage 
 app.register_blueprint(statuspage)
 
+app.config.update(
+  PROPAGATE_EXCEPTIONS=True
+)
+
 if __name__ == "__main__":
   app.run(debug=True)
